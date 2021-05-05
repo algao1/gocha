@@ -1,0 +1,27 @@
+syntax = "proto3";
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "watcher/proto";
+
+service Chat {
+  rpc Stream(stream Note) returns (stream Note) {}
+}
+
+message Note {
+  string sender = 1;
+  
+  oneof Event {
+    string message = 2;
+    Chunk chunk = 3;
+  }
+
+  google.protobuf.Timestamp time_stamp = 11;
+
+  message Chunk {
+    string name = 2;
+    string format = 3;
+    bytes chunk = 4;
+  }
+}
