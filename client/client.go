@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	pb "watcher/proto"
+	pb "github.com/algao1/watcher/proto"
 
 	_ "image/jpeg"
 	_ "image/png"
@@ -114,7 +114,7 @@ func (cc *chatClient) chunk(filename string, outCh chan<- *pb.Note, errc chan<- 
 		}
 
 		outCh <- &pb.Note{
-			Sender: cc.user,
+			Sender: "ftransfer_" + cc.user,
 			Event: &pb.Note_Chunk_{
 				Chunk: &pb.Note_Chunk{
 					Name:   cc.files[filename],

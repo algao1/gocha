@@ -8,7 +8,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "watcher/proto"
+	pb "github.com/algao1/watcher/proto"
 
 	ts "google.golang.org/protobuf/types/known/timestamppb"
 )
